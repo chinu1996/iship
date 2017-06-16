@@ -1,0 +1,86 @@
+<!-- ============ Container Section Start ========= -->
+<div class="container">
+    <!-- ============ Main Row Section Start ========= -->
+    <div class="row">
+        <!-- ============ Left Side View Start ========= -->
+        <div class="col-xs-6">
+            <div class="row chatHeight">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 chat-area messages" id="chatareamsg" schroll-bottom="chatWindow">
+                    <div class="message" ng-repeat="chatmessage in chat">{{chatmessage}}
+                        <!-- Content Bind The Time chat Happens-->
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-xs-12" style="padding-left:0px">
+                    <form name="queryform" class="input-group ng-valid ng-dirty ng-valid-parse">
+                        <input class="form-control ng-valid ng-touched ng-dirty ng-valid-parse" placeholder="Enter text to test Watson's performance" ng-model="textToClassify" aria-disabled="false" aria-invalid="false" ng-required="true">
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary ibm-btn-primary ng-scope" ng-translate="improve-perf-button-classify" aria-disabled="false" ng-click="queryform.$valid && queryClassify()">Send</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ============ Left Side View End ========= -->
+        <!-- ============ Right Side View Start ========= -->
+        <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row" style="height:80vh">
+                        <div class="col-xs-12">
+                            <!--
+                       <div class="row">
+    <div class="col-xs-12 col-md-12 message" style="padding: 1.1em;">
+        <label>Output:</label>
+        <span> {{output_1}}</span>
+    </div>
+</div>
+-->
+
+                            <div class="row message">
+                                <div class="col-xs-12 col-md-12">
+                                    <div ng-repeat="intent in intents |limitTo:1">
+                                        <label>Intent :</label>
+                                        <span>{{intent.intent}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-12" ng-if="getAnswer">
+                                    <label>Answer :</label>
+                                    <span> {{answer}} </span>
+                                </div>
+
+
+                                <div class="col-xs-12 col-md-12">
+                                    <div ng-repeat="intent in intents |limitTo:1">
+                                        <label>Confidence :</label>
+                                        <span>{{intent.confidence}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+
+
+                            <div ng-repeat="entity in entity">
+                                <div class="row message">
+                                    <div class="col-xs-12 col-md-12">
+                                        <label>Entity :</label>
+                                        <span>{{entity.entity}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============ Right Side View End ========= -->
+    </div>
+    <!-- ============ Main Row Section End ========= -->
+</div>
+<!-- ============ Container Section End ========= -->
